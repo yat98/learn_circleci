@@ -13,6 +13,9 @@
   "author": "Hidayat Chandra",
   "license": "ISC",
   "devDependencies": {
+    "@babel/preset-env": "^7.22.10",
+    "@types/jest": "^29.5.4",
+    "babel-jest": "^29.6.4",
     "jest": "^29.6.4"
   }
 }
