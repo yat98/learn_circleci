@@ -22,8 +22,6 @@ const div = (a,b) => {
   return parseFloat(Number(parseFloat(a) / parseFloat(b)).toFixed(2));
 };
 
-const print = (text) => console.log(text);
-
 export default{
-  add, sub, mul ,div, print
+  add, sub, mul ,div
 };
