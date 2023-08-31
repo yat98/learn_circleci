@@ -23,8 +23,5 @@ const div = (a,b) => {
 };
 
 export default{
-  add, 
-  sub, 
-  mul,
-  div
+  add, sub, mul ,div
 };
