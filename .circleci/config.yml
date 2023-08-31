@@ -18,6 +18,5 @@ workflows:
   upload-to-codecov:
     jobs:
       - test
-      - checkout
       - codecov/upload
       
