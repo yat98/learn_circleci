@@ -13,13 +13,13 @@ jobs:
       - node/install-packages:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
-      - run: |
-          npm run test
-          npm run test:coverage
+      - run: npm run test
+      - run: npm run test:coverage
 workflows:
   upload-to-codecov:
     jobs:
       - node/test:
           post-steps:
+            - checkout
             - codecov/upload
       
