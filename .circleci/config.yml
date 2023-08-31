@@ -15,6 +15,7 @@ jobs:
           override-ci-command: npm install
       - run: |
           npm run test
+          npm run test:coverage
 workflows:
   upload-to-codecov:
     jobs:
