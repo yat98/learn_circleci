@@ -8,12 +8,15 @@ jobs:
     steps:
       - checkout
       - run: |
+          echo 'Install NPM'
           sudo npm install -g npm@latest
           sudo npm install -g codecov
       - node/install-packages:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
-      - run: npm run test:coverage
+      - run: |
+          echo 'Test Coverage'
+          npm run test:coverage
       - codecov/upload
 workflows:
   upload-to-codecov:
