@@ -24,10 +24,6 @@ jobs:
       - run:
           name: Save coverage
           command: |
-            cp coverage.json /tmp/coverage/coverage.json
-      - run:
-          name: Save coverage 2
-          command: |
             cp coverage/coverage-final.json /tmp/coverage/coverage.json
       - persist_to_workspace:
           root: /tmp/coverage
