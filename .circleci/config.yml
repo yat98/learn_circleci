@@ -14,11 +14,5 @@ jobs:
           cache-path: ~/project/node_modules
           override-ci-command: npm install
       - run: npm run test:coverage
-workflows:
-  upload-to-codecov:
-    jobs:
-    - node/test:
-        post-steps:
-        - test
-        - codecov/upload
+      - codecov/upload
       
