@@ -17,6 +17,8 @@ jobs:
 workflows:
   upload-to-codecov:
     jobs:
-      - test
-      - codecov/upload
+    - node/test:
+        post-steps:
+        - test
+        - codecov/upload
       
