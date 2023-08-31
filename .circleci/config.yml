@@ -17,11 +17,34 @@ jobs:
       - run: |
           echo 'Test Coverage'
           npm run test:coverage
-      - codecov/upload
+      - run:
+          name: Create shared coverage outputs folder
+          command: mkdir -p /tmp/coverage
+      - run: npm run test:coverage
+      - run:
+          name: Save coverage
+          command: |
+            cp coverage.json /tmp/coverage/coverage.json
+      - run:
+          name: Save coverage 2
+          command: |
+            cp coverage/coverage-final.json /tmp/coverage/coverage.json
+      - persist_to_workspace:
+          root: /tmp/coverage
+          paths:
+            - coverage.json
+  codecov-job:
+    docker:
+      - image: cimg/base:stable
+    steps:
+      - attach_workspace:
+          at: /tmp/coverage
+      - codecov/upload:
+          file: '/tmp/coverage/coverage.json'
 workflows:
-  upload-to-codecov:
+  jobs-workflow:
     jobs:
-      - node/test:
-          post-steps:
-            - codecov/upload
-      
+      - codecov-job:
+          requires:
+            - test
+      - test
