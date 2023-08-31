@@ -19,3 +19,7 @@ jobs:
           npm run test
       - run: npm run test:coverage
       - run: codecov
+workflows:
+  jobs-workflow:
+    jobs:
+      - test
