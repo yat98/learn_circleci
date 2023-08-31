@@ -16,31 +16,6 @@ jobs:
           override-ci-command: npm install
       - run: |
           echo 'Test Coverage'
-          npm run test:coverage
-      - run:
-          name: Create shared coverage outputs folder
-          command: mkdir -p /tmp/coverage
+          npm run test
       - run: npm run test:coverage
-      - run:
-          name: Save coverage
-          command: |
-            cp coverage/coverage-final.json /tmp/coverage/coverage.json
-      - persist_to_workspace:
-          root: /tmp/coverage
-          paths:
-            - coverage.json
-  codecov-job:
-    docker:
-      - image: cimg/base:stable
-    steps:
-      - attach_workspace:
-          at: /tmp/coverage
-      - codecov/upload:
-          file: '/tmp/coverage/coverage.json'
-workflows:
-  jobs-workflow:
-    jobs:
-      - codecov-job:
-          requires:
-            - test
-      - test
+      - run: codecov
